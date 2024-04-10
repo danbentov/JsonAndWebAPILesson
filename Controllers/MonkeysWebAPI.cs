@@ -11,12 +11,14 @@ namespace CalculatorWebAPI.Controllers
     [ApiController]
     public class MonkeysWebAPI : ControllerBase
     {
-        [HttpGet("monkeys")]
+        private static MonkeyList list=new MonkeyList();
+        
+        [HttpGet("monkey")]
         public IActionResult ReadAllMonkeys()
         {
             try
             {
-                MonkeyList l = new MonkeyList();
+                MonkeyList l = list;
                 MonkeyListDto ret = new MonkeyListDto();
                 for (int i = 0; i < l.Monkeys.Count; i++)
                 {
@@ -43,15 +45,13 @@ namespace CalculatorWebAPI.Controllers
         {
             try
             {
-                MonkeyList l = new MonkeyList();
+                MonkeyList l = list;
                 bool found = false;
                 Monkey m = new Monkey();
                 for (int i = 0; i < l.Monkeys.Count; i++)
                 {
                     if (found == false && l.Monkeys[i].Name == name)
                     {
-                        
-                       
                             m.Name = l.Monkeys[i].Name;
                             m.Location = l.Monkeys[i].Location;
                             m.Details = l.Monkeys[i].Details;
@@ -97,7 +97,7 @@ namespace CalculatorWebAPI.Controllers
                     ImageUrl = monkey.ImageUrl,
                     IsFavorite = monkey.IsFavorite
                 };
-                MonkeyList list = new MonkeyList();
+                
                 bool nameExist = false;
                 for (int i = 0; i < list.Monkeys.Count; i++)
                 {

@@ -20,6 +20,10 @@ namespace CalculatorWebAPI.DTO
     public class MonkeyListDto
     {
         public List<MonkeyDto> Monkeys { get; set; }
+        public MonkeyListDto()
+        {
+            this.Monkeys = new List<MonkeyDto>();
+        }
         public override string ToString()
         {
             return JsonSerializer.Serialize(this);
