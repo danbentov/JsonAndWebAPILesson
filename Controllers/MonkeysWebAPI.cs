@@ -11,7 +11,7 @@ namespace CalculatorWebAPI.Controllers
     [ApiController]
     public class MonkeysWebAPI : ControllerBase
     {
-        private static MonkeyList list=new MonkeyList();
+        private static MonkeyList list = new MonkeyList();
         
         [HttpGet("monkey")]
         public IActionResult ReadAllMonkeys()
